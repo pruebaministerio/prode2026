@@ -347,6 +347,9 @@ button{cursor:pointer;border:none;background:none;color:inherit}
   .pen-lbl    { font-size: 12px; }
 }
 </style>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4BDDCDV4PM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4BDDCDV4PM');</script>
 </head>
 <body>
 <div id="root"></div>
@@ -654,6 +657,7 @@ function MatchCard({match,myPick,result,players,token,onPickSaved,isAdmin,onResu
     const r=await api(payload);
     setSaving(false);
     if(!r.ok){setErr(r.error||'Error.');return;}
+    if(typeof gtag!=='undefined') gtag('event','pick_saved',{event_category:'engagement',match_id:match.id});
     const saved={s1:n1,s2:n2,scorers:selSc,...(isKO&&n1===n2?{pen1:pp1,pen2:pp2}:{})};
     onPickSaved(match.id,saved);setOpen(false);
   }
@@ -1245,6 +1249,7 @@ function AuthScreen({onLogin,regStatus={}}){
     const r=await api({action:mode,...f});
     setLoading(false);
     if(!r.ok){setErr(r.error);if(mode==='register'){setCap(genCaptcha());setCapVal('');}return;}
+    if(typeof gtag!=='undefined') gtag('event',mode==='register'?'sign_up':'login',{method:'password'});
     SS.save(r.user,r.token);onLogin(r.user,r.token);
   }
 

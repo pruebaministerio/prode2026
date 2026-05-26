@@ -247,6 +247,9 @@ footer{background:var(--navy2);border-top:1px solid rgba(201,168,76,.1);padding:
   .pt-emoji{margin-bottom:0;font-size:1.5rem}
 }
 </style>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4BDDCDV4PM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4BDDCDV4PM');</script>
 </head>
 <body>
 
@@ -350,7 +353,7 @@ footer{background:var(--navy2);border-top:1px solid rgba(201,168,76,.1);padding:
         <div class="app-dl-title">Prode Vale 4</div>
         <div class="app-dl-sub">App nativa para Android · 1 MB · Sin Play Store</div>
         <div class="app-dl-btns">
-          <a class="btn-apk" href="ProdeV4.apk" download="ProdeV4.apk">
+          <a class="btn-apk" href="ProdeV4.apk" download="ProdeV4.apk" onclick="if(typeof gtag!=='undefined')gtag('event','apk_download',{event_category:'engagement'});">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
             </svg>
@@ -625,6 +628,7 @@ footer{background:var(--navy2);border-top:1px solid rgba(201,168,76,.1);padding:
 function openContact(){
   document.getElementById('cOverlay').classList.add('open');
   document.body.style.overflow='hidden';
+  if(typeof gtag!=='undefined') gtag('event','contact_open',{event_category:'engagement'});
 }
 function closeContact(){
   document.getElementById('cOverlay').classList.remove('open');
@@ -656,6 +660,7 @@ function sendContact(){
   .then(function(r){return r.json();})
   .then(function(r){
     if(r.ok){
+      if(typeof gtag!=='undefined') gtag('event','contact_submit',{event_category:'engagement'});
       document.getElementById('cForm').style.display='none';
       document.getElementById('cSent').style.display='block';
     } else {
@@ -683,6 +688,7 @@ document.getElementById('cMsg').addEventListener('input',function(){
   function setButtons(isOpen){
     if(isOpen===prevOpen) return;
     prevOpen=isOpen;
+    if(isOpen&&typeof gtag!=='undefined') gtag('event','registration_open',{event_category:'milestone'});
     document.querySelectorAll('.cta-app').forEach(function(el){
       if(isOpen){
         el.href=APP_URL;
