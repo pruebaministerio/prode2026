@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:1200px;height:630px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  overflow:hidden;position:relative;
+  display:flex;
+}
+
+/* ── PANEL IZQUIERDO — Copa ───────────────────────── */
+.left{
+  width:420px;height:100%;flex-shrink:0;
+  background:#0a1628;
+  position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+/* resplandor CSS detrás de la copa */
+.copa-glow{
+  position:absolute;
+  width:420px;height:580px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse 62% 68% at 52% 46%,
+    rgba(255,250,180,1)   0%,
+    rgba(255,220,80,1)   14%,
+    rgba(240,185,30,.85) 28%,
+    rgba(210,160,10,.55) 45%,
+    rgba(170,120,5,.25)  60%,
+    transparent          75%);
+  pointer-events:none;
+}
+/* rayos divergentes tipo destellos */
+.copa-rays{
+  position:absolute;
+  width:420px;height:560px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:
+    conic-gradient(from 0deg at 52% 46%,
+      transparent 0deg,   rgba(255,230,80,.18) 2deg,  transparent 5deg,
+      transparent 20deg,  rgba(255,230,80,.15) 22deg, transparent 26deg,
+      transparent 42deg,  rgba(255,230,80,.20) 44deg, transparent 48deg,
+      transparent 65deg,  rgba(255,230,80,.14) 67deg, transparent 70deg,
+      transparent 85deg,  rgba(255,230,80,.18) 87deg, transparent 91deg,
+      transparent 108deg, rgba(255,230,80,.15) 110deg,transparent 114deg,
+      transparent 130deg, rgba(255,230,80,.20) 132deg,transparent 136deg,
+      transparent 155deg, rgba(255,230,80,.14) 157deg,transparent 161deg,
+      transparent 175deg, rgba(255,230,80,.18) 177deg,transparent 181deg,
+      transparent 200deg, rgba(255,230,80,.16) 202deg,transparent 206deg,
+      transparent 220deg, rgba(255,230,80,.20) 222deg,transparent 226deg,
+      transparent 244deg, rgba(255,230,80,.14) 246deg,transparent 250deg,
+      transparent 265deg, rgba(255,230,80,.18) 267deg,transparent 271deg,
+      transparent 290deg, rgba(255,230,80,.15) 292deg,transparent 296deg,
+      transparent 315deg, rgba(255,230,80,.20) 317deg,transparent 321deg,
+      transparent 340deg, rgba(255,230,80,.14) 342deg,transparent 346deg,
+      transparent 360deg);
+  pointer-events:none;
+  mask:radial-gradient(ellipse 50% 55% at 52% 46%, transparent 25%, black 70%);
+  -webkit-mask:radial-gradient(ellipse 50% 55% at 52% 46%, transparent 25%, black 70%);
+}
+.copa-img{
+  height:590px;width:auto;
+  position:relative;z-index:1;
+  mix-blend-mode:multiply;
+  filter:brightness(1.25) contrast(1.05);
+}
+
+/* ── PANEL DERECHO — Texto ───────────────────────── */
+.right{
+  flex:1;height:100%;
+  background:#0a1628;
+  border-left:1px solid rgba(201,168,76,.1);
+  position:relative;display:flex;flex-direction:column;justify-content:center;
+  padding:0 52px 0 44px;
+  overflow:hidden;
+}
+/* grid de fondo */
+.right::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,.07) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+/* destello superior */
+.glow{position:absolute;top:-60px;right:-60px;
+  width:500px;height:400px;
+  background:radial-gradient(ellipse at 70% 20%,rgba(201,168,76,.18),transparent 65%);
+  pointer-events:none;
+}
+
+.content{position:relative;z-index:1}
+
+/* Badge */
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,120,30,.18);border:1px solid rgba(201,120,30,.55);
+  border-radius:20px;padding:5px 16px;
+  font-size:12px;font-weight:700;color:#e8a050;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#e8a050}
+
+/* Flags */
+.flags{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.flags img{width:32px;height:auto}
+
+/* Título */
+.title{
+  font-size:68px;font-weight:900;line-height:.95;letter-spacing:-.03em;
+  background:linear-gradient(140deg,#f5e0a0 0%,#e8c96a 50%,#c9a84c 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;
+}
+
+/* Tagline */
+.tagline{font-size:21px;font-weight:700;color:#f0f4ff;margin-bottom:5px}
+.tagline em{color:#e8c96a;font-style:normal}
+
+/* Sub */
+.sub{font-size:13px;color:#6a7a9a;margin-bottom:24px;letter-spacing:.02em}
+
+/* Premios */
+.prizes{display:flex;gap:10px;align-items:flex-end;margin-bottom:14px}
+.prize{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,168,76,.15);
+  border-radius:10px;padding:9px 16px;text-align:center;
+}
+.prize.gold{border-color:rgba(201,168,76,.55);background:rgba(201,168,76,.12)}
+.p-ico{font-size:16px;margin-bottom:2px}
+.p-amt{font-size:19px;font-weight:900;color:#e8c96a;line-height:1}
+.prize.gold .p-amt{font-size:26px;color:#f5e0a0}
+.p-lbl{font-size:9px;color:#6a7a9a;text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+
+/* Pozo */
+.pozo{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.22);
+  border-radius:8px;padding:7px 16px;
+}
+.pozo-lbl{font-size:11px;color:#6a7a9a;text-transform:uppercase;letter-spacing:.07em}
+.pozo-val{font-size:17px;font-weight:900;color:#e8c96a}
+
+/* URL */
+.url{
+  position:absolute;bottom:16px;right:24px;
+  font-size:11px;color:rgba(201,168,76,.3);letter-spacing:.04em;
+  z-index:1;
+}
+</style>
+</head>
+<body>
+
+<!-- Copa izquierda -->
+<div class="left">
+  <div class="copa-rays"></div>
+  <div class="copa-glow"></div>
+  <img class="copa-img" src="copa.png" alt="Copa Mundial">
+</div>
+
+<!-- Contenido derecho -->
+<div class="right">
+  <div class="glow"></div>
+  <div class="content">
+    <div class="badge"><div class="dot"></div>Inscripción abierta · ⚡ Cupos limitados</div>
+    <div class="flags">
+      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f1fa-1f1f8.png" alt="USA">
+      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f1e8-1f1e6.png" alt="Canadá">
+      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f1f2-1f1fd.png" alt="México">
+    </div>
+    <div class="title">Prode<br>Vale 4</div>
+    <div class="tagline">¡Participá y <em>ganá en grande!</em></div>
+    <div class="sub">Pronosticá cada partido del Mundial 2026 · Goleadores · Penales</div>
+    <div class="prizes">
+      <div class="prize">
+        <div class="p-ico">🥈</div>
+        <div class="p-amt">$50.000</div>
+        <div class="p-lbl">2° Puesto</div>
+      </div>
+      <div class="prize gold">
+        <div class="p-ico">🥇</div>
+        <div class="p-amt">$100.000</div>
+        <div class="p-lbl">1° Puesto</div>
+      </div>
+      <div class="prize">
+        <div class="p-ico">🥉</div>
+        <div class="p-amt">$25.000</div>
+        <div class="p-lbl">3° Puesto</div>
+      </div>
+    </div>
+    <div class="pozo">
+      <span class="pozo-lbl">💰 Pozo total</span>
+      <span class="pozo-val">$175.000</span>
+    </div>
+  </div>
+  <div class="url">prodevale4.e-sencia.com.ar</div>
+</div>
+
+</body>
+</html>

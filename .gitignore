@@ -1,0 +1,14 @@
+# Credenciales — NO subir al repo
+api.php
+
+# Backups y archivos temporales
+*copia*
+*.bak
+*.tmp
+
+# APK — binario pesado, distribuir aparte
+*.apk
+
+# OS
+.DS_Store
+Thumbs.db

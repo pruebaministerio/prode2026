@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1628">
+<meta name="description" content="¿Quién sabe más de fútbol? Pronosticá cada partido del Mundial 2026, goleadores y penales. $175.000 en premios.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vale 4 Prode">
+<!-- Open Graph — preview en WhatsApp / Telegram / redes -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prodevale4.e-sencia.com.ar/prode2026/">
+<meta property="og:title" content="⚽ Prode Vale 4 — Mundial 2026">
+<meta property="og:description" content="⏳ Inscripciones abren el 31 de mayo. Pronosticá cada partido del Mundial 2026 y ganá hasta $100.000 🏆">
+<meta property="og:image" content="https://prodevale4.e-sencia.com.ar/prode2026/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Prode Vale 4 — Mundial USA·CA·MX 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --navy:#0a1628;--navy2:#111e35;--navy3:#182b47;--navy4:#1e3456;
+  --gold:#c9a84c;--gold2:#e8c96a;--gold3:#f5e0a0;
+  --white:#f0f4ff;--white2:#c8d4ee;
+  --muted:#6a7a9a;
+  --green:#4cd98a;--green-bg:rgba(39,174,96,.15);--green-br:rgba(39,174,96,.35);
+  --orange:#e8a050;--orange-bg:rgba(201,120,30,.12);--orange-br:rgba(201,120,30,.35);
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden}
+
+/* ─── NAV ──────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(10,22,40,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.12)}
+.nav-brand{display:flex;align-items:center;gap:9px}
+.nav-icon{font-size:20px}
+.nav-name{font-size:14px;font-weight:800;color:var(--gold2);letter-spacing:.02em}
+.nav-name small{display:block;font-size:9px;color:var(--muted);font-weight:400;letter-spacing:.06em;text-transform:uppercase}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a1628;font-weight:800;font-size:12px;border-radius:20px;padding:7px 16px;text-decoration:none;white-space:nowrap;transition:opacity .15s}
+.nav-cta:hover{opacity:.85}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 24px 70px;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(201,168,76,.14) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(41,128,185,.08) 0%, transparent 60%),
+    linear-gradient(180deg,var(--navy2) 0%,var(--navy) 100%);
+  position:relative;overflow:hidden;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--orange-bg);border:1px solid var(--orange-br);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.07em;text-transform:uppercase;margin-bottom:22px}
+.hero-badge span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hosts{font-size:28px;letter-spacing:8px;margin-bottom:18px}
+.hero-title{font-size:clamp(3rem,12vw,5.5rem);font-weight:900;line-height:1.02;letter-spacing:-.02em;margin-bottom:10px;background:linear-gradient(140deg,var(--gold3) 0%,var(--gold2) 40%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-mundial{font-size:clamp(.95rem,3.5vw,1.3rem);color:var(--white2);margin-bottom:6px;font-weight:300;letter-spacing:.04em}
+.hero-tag{font-size:clamp(.82rem,2.5vw,.95rem);color:var(--muted);margin-bottom:40px;max-width:400px;line-height:1.5}
+.cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:28px}
+.btn-main{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#08121f;font-weight:800;font-size:1.05rem;border-radius:50px;padding:15px 38px;text-decoration:none;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 28px rgba(201,168,76,.4);letter-spacing:.01em}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(201,168,76,.55)}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:.85rem;text-decoration:none;border:1px solid rgba(201,168,76,.2);border-radius:50px;padding:9px 22px;transition:all .15s}
+.btn-ghost:hover{color:var(--gold);border-color:rgba(201,168,76,.45)}
+
+.hero-stats{display:flex;gap:0;background:var(--navy2);border:1px solid rgba(201,168,76,.15);border-radius:var(--r);overflow:hidden}
+.hstat{flex:1;padding:14px 10px;text-align:center;border-right:1px solid rgba(201,168,76,.1)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-size:1.7rem;font-weight:900;color:var(--gold2);line-height:1}
+.hstat-l{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
+
+/* ─── SECCIONES ─────────────────────────────────────────── */
+section{padding:72px 24px}
+.container{max-width:680px;margin:0 auto}
+.sec-eyebrow{text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-title{font-size:clamp(1.5rem,5vw,2.1rem);font-weight:800;text-align:center;margin-bottom:8px;line-height:1.2}
+.sec-sub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:42px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.55}
+
+/* ─── STEPS ─────────────────────────────────────────────── */
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;align-items:flex-start;gap:16px;background:var(--navy2);border:1px solid rgba(201,168,76,.12);border-radius:var(--r);padding:18px 20px;transition:border-color .15s}
+.step:hover{border-color:rgba(201,168,76,.3)}
+.step-num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#08121f;font-size:1rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;box-shadow:0 2px 12px rgba(201,168,76,.3)}
+.step-body strong{display:block;font-size:.98rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.step-body p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.step-body p b{color:var(--white2);font-weight:600}
+
+/* ─── PUNTOS ─────────────────────────────────────────────── */
+.pts-wrap{background:var(--navy2)}
+.pts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pt-card{background:var(--navy3);border:1px solid rgba(201,168,76,.15);border-radius:var(--r);padding:22px 14px;text-align:center;position:relative;overflow:hidden}
+.pt-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.pt-emoji{font-size:1.9rem;margin-bottom:10px;display:block}
+.pt-val{font-size:2rem;font-weight:900;color:var(--gold2);line-height:1;margin-bottom:5px}
+.pt-title{font-size:.8rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.pt-desc{font-size:.72rem;color:var(--muted);line-height:1.45}
+.pts-note{text-align:center;font-size:.78rem;color:var(--muted);margin-top:16px;padding:10px 14px;background:var(--navy3);border-radius:8px;border:1px solid rgba(201,168,76,.08)}
+
+/* ─── PREMIOS ─────────────────────────────────────────────── */
+.premios-sec{background:var(--navy2)}
+.podium-wrap{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin-bottom:0;padding:8px 0 0}
+.podium-item{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;max-width:200px}
+.p-medal{font-size:2.2rem;margin-bottom:6px;filter:drop-shadow(0 2px 10px rgba(201,168,76,.45))}
+.p-pos{font-size:.65rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;font-weight:700}
+.p-prize{font-weight:900;line-height:1;margin-bottom:10px}
+.p1 .p-prize{font-size:2rem;color:var(--gold2)}
+.p2 .p-prize{font-size:1.5rem;color:var(--white2)}
+.p3 .p-prize{font-size:1.2rem;color:#cd9b5a}
+.p-bar{width:100%;border-radius:8px 8px 0 0}
+.p1 .p-bar{background:linear-gradient(180deg,var(--gold),rgba(201,168,76,.55));box-shadow:0 -6px 24px rgba(201,168,76,.3);height:120px}
+.p2 .p-bar{background:linear-gradient(180deg,#7a8fa8,rgba(120,140,168,.45));height:80px}
+.p3 .p-bar{background:linear-gradient(180deg,#a0643a,rgba(160,100,58,.4));height:55px}
+.podium-floor{height:3px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.35),transparent);margin-bottom:22px}
+.pozo-total{display:flex;align-items:center;justify-content:space-between;background:var(--navy3);border:1px solid rgba(201,168,76,.28);border-radius:var(--r);padding:16px 22px}
+.pozo-lbl{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.pozo-val{font-size:2.1rem;font-weight:900;color:var(--gold2);letter-spacing:-.02em}
+.mot-strip{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:28px}
+.mot-chip{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:20px;padding:7px 18px;font-size:.8rem;color:var(--white2);font-weight:600;letter-spacing:.01em;transition:border-color .15s}
+.mot-chip:hover{border-color:rgba(201,168,76,.45)}
+
+/* ─── PAGO ───────────────────────────────────────────────── */
+.pago-card{background:var(--navy2);border:1px solid var(--orange-br);border-radius:14px;padding:28px 24px;max-width:440px;margin:0 auto}
+.pago-precio{text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(201,168,76,.1)}
+.pago-precio-n{font-size:3.5rem;font-weight:900;color:var(--gold2);line-height:1;letter-spacing:-.02em}
+.pago-precio-l{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.pago-row{display:flex;align-items:center;gap:12px;background:var(--navy3);border:1px solid rgba(201,168,76,.1);border-radius:9px;padding:11px 14px;margin-bottom:8px}
+.pago-ico{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+.pago-info{flex:1;min-width:0}
+.pago-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1px}
+.pago-val{font-size:.88rem;color:var(--white);word-break:break-all}
+.pago-val.mono{font-family:monospace;font-size:.85rem}
+.pago-concepto{border-color:var(--orange-br);background:var(--orange-bg)}
+.pago-concepto .pago-lbl{color:var(--orange)}
+.pago-concepto .pago-val{color:#ffd080;font-weight:700;font-family:monospace}
+.pago-timeline{margin-top:16px;background:rgba(201,120,30,.07);border:1px solid var(--orange-br);border-radius:9px;padding:12px 14px;font-size:.78rem;color:var(--muted);line-height:1.6}
+.pago-timeline strong{color:var(--orange)}
+
+/* ─── FECHAS ──────────────────────────────────────────────── */
+.fechas-bg{background:var(--navy2)}
+.fecha-list{display:flex;flex-direction:column;gap:9px}
+.fecha-item{display:flex;align-items:center;gap:14px;background:var(--navy3);border:1px solid rgba(201,168,76,.1);border-radius:var(--r);padding:14px 16px}
+.fec-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.fec-green{background:var(--green);box-shadow:0 0 8px rgba(76,217,138,.5)}
+.fec-gold{background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,.5)}
+.fec-red{background:#e74c3c;box-shadow:0 0 8px rgba(231,76,60,.4)}
+.fec-body strong{display:block;font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:2px}
+.fec-body span{font-size:.78rem;color:var(--muted)}
+
+/* ─── DESCARGA APP ────────────────────────────────────────── */
+.app-dl-sec{background:var(--navy2)}
+.app-dl-inner{display:flex;align-items:center;gap:28px;background:var(--navy3);border:1px solid rgba(201,168,76,.18);border-radius:16px;padding:28px 28px}
+.app-dl-icon{width:88px;height:88px;border-radius:20px;flex-shrink:0;box-shadow:0 4px 20px rgba(0,0,0,.45)}
+.app-dl-info{flex:1;min-width:0}
+.app-dl-title{font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:4px}
+.app-dl-sub{font-size:.78rem;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.app-dl-btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn-apk{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2dd36f,#18a24a);color:#fff;font-weight:700;font-size:.85rem;border-radius:30px;padding:10px 22px;text-decoration:none;box-shadow:0 3px 12px rgba(45,211,111,.35);transition:transform .15s,box-shadow .15s}
+.btn-apk:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(45,211,111,.45)}
+.btn-apk svg{width:16px;height:16px;flex-shrink:0}
+.btn-web-alt{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:.82rem;text-decoration:none;border:1px solid rgba(201,168,76,.2);border-radius:30px;padding:9px 18px;transition:all .15s}
+.btn-web-alt:hover{color:var(--gold);border-color:rgba(201,168,76,.45)}
+.app-dl-note{margin-top:12px;font-size:.7rem;color:var(--muted);line-height:1.55;padding:8px 12px;background:rgba(201,168,76,.05);border-radius:8px;border:1px solid rgba(201,168,76,.08)}
+.app-dl-note strong{color:var(--gold2)}
+@media(max-width:480px){
+  .app-dl-inner{flex-direction:column;text-align:center}
+  .app-dl-btns{justify-content:center}
+}
+/* ─── CTA FINAL ───────────────────────────────────────────── */
+.cta-fin{
+  text-align:center;padding:88px 24px;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,168,76,.1) 0%,transparent 70%);
+}
+.cta-fin-trophy{font-size:4rem;margin-bottom:20px;display:block;filter:drop-shadow(0 0 20px rgba(201,168,76,.5));animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cta-fin h2{font-size:clamp(1.6rem,6vw,2.4rem);font-weight:900;margin-bottom:10px;background:linear-gradient(135deg,var(--gold3),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-fin p{color:var(--muted);font-size:.9rem;max-width:360px;margin:0 auto 36px;line-height:1.55}
+
+/* ─── DESEMPATE ───────────────────────────────────────────── */
+.desempate-sec{background:var(--navy2)}
+.tie-grid{display:flex;flex-direction:column;gap:8px}
+.tie-row{display:flex;align-items:center;gap:14px;background:var(--navy3);border:1px solid rgba(201,168,76,.1);border-radius:10px;padding:13px 16px}
+.tie-rank{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#08121f;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tie-body strong{display:block;font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+.tie-body span{font-size:.78rem;color:var(--muted)}
+.tie-final{text-align:center;font-size:.78rem;color:var(--muted);margin-top:12px;padding:10px 14px;background:var(--navy3);border-radius:8px;border:1px solid rgba(201,168,76,.08)}
+.tie-final strong{color:var(--gold2)}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+footer{background:var(--navy2);border-top:1px solid rgba(201,168,76,.1);padding:28px 24px;text-align:center}
+.foot-brand{font-size:1.1rem;font-weight:800;color:var(--gold2);margin-bottom:4px}
+.foot-sub{font-size:.75rem;color:var(--muted)}
+
+/* ─── COUNTDOWN ──────────────────────────────────────────── */
+.cd-wrap{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.28);border-radius:14px;padding:18px 24px 14px;text-align:center;margin-bottom:28px;max-width:400px;width:100%;position:relative;z-index:1}
+.cd-label{font-size:.67rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.cd-units{display:flex;align-items:flex-start;justify-content:center;gap:2px}
+.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:72px}
+.cd-n{font-size:2.6rem;font-weight:900;color:var(--gold2);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;transition:color .3s}
+.cd-l{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px}
+.cd-sep{font-size:2.2rem;font-weight:900;color:var(--gold);opacity:.35;padding:0 0px;margin-top:2px}
+/* FAB consulta — landing pública */
+.fab-wa{position:fixed;bottom:22px;right:16px;z-index:150;width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,#2dd36f 0%,#18a24a 100%);box-shadow:0 4px 20px rgba(0,0,0,.45),0 0 0 3px rgba(45,211,111,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;color:#fff;transition:transform .15s,box-shadow .15s}
+.fab-wa:hover{transform:scale(1.09);box-shadow:0 6px 24px rgba(0,0,0,.55),0 0 0 5px rgba(45,211,111,.22)}
+.fab-wa:active{transform:scale(.96)}
+.fab-wa::before{content:'Hacé tu consulta';position:absolute;right:60px;top:50%;transform:translateY(-50%);background:rgba(10,22,40,.92);color:#f0f4ff;font-size:11px;white-space:nowrap;padding:5px 10px;border-radius:6px;border:1px solid rgba(201,168,76,.18);opacity:0;pointer-events:none;transition:opacity .2s .1s}
+.fab-wa:hover::before{opacity:1}
+/* Modal de consulta pública */
+.c-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.c-overlay.open{display:flex}
+.c-box{background:var(--navy2);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:24px;width:100%;max-width:380px}
+.c-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.c-head strong{font-size:.95rem;color:var(--white)}
+.c-close{font-size:18px;background:none;border:none;color:var(--muted);cursor:pointer;padding:4px 8px;border-radius:6px;line-height:1;transition:color .15s}
+.c-close:hover{color:var(--white)}
+.c-hint{font-size:.8rem;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.c-field{margin-bottom:11px}
+.c-field label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.c-input{width:100%;background:var(--navy3);border:1.5px solid rgba(201,168,76,.18);border-radius:8px;padding:9px 12px;color:var(--white);font-size:.88rem;outline:none;transition:border-color .15s;font-family:inherit}
+.c-input:focus{border-color:rgba(201,168,76,.5)}
+.c-ta{width:100%;background:var(--navy3);border:1.5px solid rgba(201,168,76,.18);border-radius:8px;padding:9px 12px;color:var(--white);font-size:.85rem;resize:vertical;min-height:88px;outline:none;font-family:inherit;line-height:1.5;transition:border-color .15s}
+.c-ta:focus{border-color:rgba(201,168,76,.5)}
+.c-cnt{font-size:.65rem;color:var(--muted);text-align:right;margin-top:2px}
+.c-err{font-size:.78rem;color:#e07070;background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:7px 10px;margin-top:8px;display:none}
+.btn-send{width:100%;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#08121f;font-weight:800;font-size:.9rem;border-radius:8px;border:none;cursor:pointer;margin-top:10px;transition:opacity .15s;font-family:inherit}
+.btn-send:hover{opacity:.88}
+.btn-send:disabled{opacity:.5;cursor:default}
+.c-sent{text-align:center;padding:12px 0}
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media(min-width:520px){
+  .cta-wrap{flex-direction:row;justify-content:center}
+  .hero-stats{max-width:360px}
+}
+@media(max-width:400px){
+  .pts-grid{grid-template-columns:1fr}
+  .pt-card::before{display:none}
+  .pt-card{display:flex;align-items:center;gap:14px;text-align:left;padding:14px 16px}
+  .pt-emoji{margin-bottom:0;font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-icon">⚽</span>
+    <div class="nav-name">Vale 4 Prode<small>Mundial 2026</small></div>
+  </div>
+  <a href="index.html" class="nav-cta cta-app"
+     data-open-label="⚽ ¡Jugar!"
+     data-closed-label="📲 Anotate">⚽ ¡Jugar!</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-badge"><span></span>Inscripciones abren el 31 de mayo &nbsp;·&nbsp; ⚡ Cupos limitados</div>
+  <div class="hosts">🇺🇸 🇨🇦 🇲🇽</div>
+  <h1 class="hero-title">Prode Vale 4</h1>
+  <p class="hero-mundial">Mundial FIFA 2026 · 48 selecciones · 104 partidos</p>
+  <p class="hero-tag">¿Quién sabe más de fútbol del grupo? Demostrá que sos el más picado — pronosticá cada partido y ganá hasta <strong style="color:var(--gold2);font-weight:800">$100.000</strong>. Inscripciones abren el <strong style="color:var(--gold2);font-weight:700">31 de mayo</strong>.</p>
+  <div class="cta-wrap">
+    <a href="index.html" class="btn-main cta-app"
+       data-open-label="⚽ ¡Quiero jugar!"
+       data-closed-label="🔔 ¡No te quedes afuera!">🔔 ¡No te quedes afuera!</a>
+    <a href="#como-funciona" class="btn-ghost">¿Cómo funciona? ↓</a>
+  </div>
+  <!-- COUNTDOWN -->
+  <div class="cd-wrap" id="cdWrap">
+    <div class="cd-label">⏳ Las inscripciones abren en</div>
+    <div class="cd-units">
+      <div class="cd-unit"><span class="cd-n" id="cdDias">--</span><span class="cd-l">días</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-n" id="cdHoras">--</span><span class="cd-l">horas</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-n" id="cdMins">--</span><span class="cd-l">min</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-n" id="cdSegs">--</span><span class="cd-l">seg</span></div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">104</div><div class="hstat-l">Partidos</div></div>
+    <div class="hstat"><div class="hstat-n">48</div><div class="hstat-l">Equipos</div></div>
+    <div class="hstat"><div class="hstat-n">39</div><div class="hstat-l">Días</div></div>
+    <div class="hstat"><div class="hstat-n" style="font-size:1.2rem;color:var(--gold2)">$175K</div><div class="hstat-l">Premios</div></div>
+  </div>
+</section>
+
+<!-- PREMIOS -->
+<section class="premios-sec">
+  <div class="container">
+    <div class="sec-eyebrow">Premios confirmados</div>
+    <h2 class="sec-title">$175.000 en premios</h2>
+    <p class="sec-sub">El que más sabe, es el que más gana. Tres puestos premiados, un solo campeón.</p>
+    <div class="podium-wrap">
+      <div class="podium-item p2">
+        <div class="p-medal">🥈</div>
+        <div class="p-pos">2° Puesto</div>
+        <div class="p-prize">$50.000</div>
+        <div class="p-bar"></div>
+      </div>
+      <div class="podium-item p1">
+        <div class="p-medal">🥇</div>
+        <div class="p-pos">1° Puesto</div>
+        <div class="p-prize">$100.000</div>
+        <div class="p-bar"></div>
+      </div>
+      <div class="podium-item p3">
+        <div class="p-medal">🥉</div>
+        <div class="p-pos">3° Puesto</div>
+        <div class="p-prize">$25.000</div>
+        <div class="p-bar"></div>
+      </div>
+    </div>
+    <div class="podium-floor"></div>
+    <div class="pozo-total">
+      <div class="pozo-lbl">💰 Pozo total acumulado</div>
+      <div class="pozo-val">$175.000</div>
+    </div>
+    <div class="mot-strip">
+      <span class="mot-chip">🔥 Participá</span>
+      <span class="mot-chip">🧠 Demostrá tus conocimientos</span>
+      <span class="mot-chip">📈 Escalá la tabla</span>
+      <span class="mot-chip">🎯 Acertá más que nadie</span>
+      <span class="mot-chip">🏆 Ganá premios reales</span>
+    </div>
+  </div>
+</section>
+
+<!-- DESCARGA APP -->
+<section class="app-dl-sec">
+  <div class="container">
+    <div class="sec-eyebrow">Disponible como app</div>
+    <h2 class="sec-title">Instalá o jugá desde el navegador</h2>
+    <p class="sec-sub" style="margin-bottom:28px">Lo que prefieras — la experiencia es igual en ambos</p>
+    <div class="app-dl-inner">
+      <img class="app-dl-icon" src="ICONO-rounded.png" alt="Prode Vale 4">
+      <div class="app-dl-info">
+        <div class="app-dl-title">Prode Vale 4</div>
+        <div class="app-dl-sub">App nativa para Android · 1 MB · Sin Play Store</div>
+        <div class="app-dl-btns">
+          <a class="btn-apk" href="ProdeV4.apk" download="ProdeV4.apk">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            Descargar APK · Android
+          </a>
+          <a class="btn-web-alt cta-app"
+             href="index.html"
+             data-open-label="🌐 Usar en el navegador"
+             data-closed-label="🌐 Usar en el navegador">
+            🌐 Usar en el navegador
+          </a>
+        </div>
+        <div class="app-dl-note">
+          📱 <strong>Cómo instalar el APK:</strong> Descargá el archivo → abrilo desde notificaciones o el administrador de archivos → si Android lo pide, habilitá <em>"Instalar apps desconocidas"</em> para tu navegador → instalá. Rápido y seguro.<br>
+          🍎 <strong>iPhone / iOS:</strong> Abrí la app en Safari → tocá <em>Compartir</em> → <em>"Agregar a pantalla de inicio"</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="sec-eyebrow">Guía rápida</div>
+    <h2 class="sec-title">¿Cómo funciona?</h2>
+    <p class="sec-sub">Cuatro pasos y estás jugando desde tu celular</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Registrate en la app</strong>
+          <p>Entrá a la app, creá tu usuario con nombre, DNI y celular. Rápido y sin burocracia.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Pagá la inscripción</strong>
+          <p>Al ingresar a la app encontrás los datos bancarios. Transferí <b>$5.000</b> poniendo <b>PRODE-tuusuario</b> en el concepto y presioná <b>"Ya pagué"</b>. En minutos se activa tu cuenta.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Pronosticá cada partido</strong>
+          <p>Antes de que empiece cada partido cargá tu marcador, el resultado en penales si lo hay, y hasta <b>3 goleadores</b>. Podés editarlo hasta el pitazo inicial.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Seguí la tabla y ganá</strong>
+          <p>Los puntos se actualizan automáticamente al cargarse cada resultado. La tabla es pública — ¡que gane el mejor!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUNTOS -->
+<section class="pts-wrap">
+  <div class="container">
+    <div class="sec-eyebrow">Puntuación</div>
+    <h2 class="sec-title">Sistema de puntos</h2>
+    <p class="sec-sub">Cada partido es una nueva oportunidad de subir en la tabla</p>
+    <div class="pts-grid">
+      <div class="pt-card">
+        <span class="pt-emoji">🎯</span>
+        <div class="pt-val">+1</div>
+        <div class="pt-title">Resultado</div>
+        <div class="pt-desc">Acertás quién gana o si hay empate — incluyendo penales en eliminatorias</div>
+      </div>
+      <div class="pt-card">
+        <span class="pt-emoji">🏆</span>
+        <div class="pt-val">+0.5</div>
+        <div class="pt-title">Score exacto</div>
+        <div class="pt-desc">El marcador exacto del partido, y también el de los penales</div>
+      </div>
+      <div class="pt-card">
+        <span class="pt-emoji">⚽</span>
+        <div class="pt-val">+0.5</div>
+        <div class="pt-title">Goleador</div>
+        <div class="pt-desc">Por cada goleador acertado, hasta 3 por partido</div>
+      </div>
+    </div>
+    <div class="pts-note">💡 Un partido con resultado + score exacto + 3 goleadores vale hasta <strong style="color:var(--gold2)">3 puntos</strong></div>
+  </div>
+</section>
+
+<!-- PAGO -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">Inscripción</div>
+    <h2 class="sec-title">¿Cuánto cuesta?</h2>
+    <p class="sec-sub">Un solo pago para todo el Mundial</p>
+    <div class="pago-card">
+      <div class="pago-precio">
+        <div class="pago-precio-n">$5.000</div>
+        <div class="pago-precio-l">Pesos argentinos · pago único · todo el Mundial</div>
+      </div>
+      <div class="pago-row">
+        <span class="pago-ico">💳</span>
+        <div class="pago-info">
+          <div class="pago-lbl">Forma de pago</div>
+          <div class="pago-val">Transferencia bancaria</div>
+        </div>
+      </div>
+      <div class="pago-row">
+        <span class="pago-ico">📲</span>
+        <div class="pago-info">
+          <div class="pago-lbl">¿Cómo obtengo los datos?</div>
+          <div class="pago-val">Al ingresar a la app los ves directamente</div>
+        </div>
+      </div>
+      <div class="pago-row">
+        <span class="pago-ico">⚡</span>
+        <div class="pago-info">
+          <div class="pago-lbl">Activación</div>
+          <div class="pago-val">Enviá el comprobante · activación en minutos</div>
+        </div>
+      </div>
+      <div class="pago-timeline">
+        <strong>📋 Pasos:</strong> Registrate → Ingresá a la app → Encontrás los datos bancarios → Transferí poniendo <strong style="color:var(--orange)">PRODE-tuusuario</strong> en el concepto → Presioná <strong style="color:var(--orange)">"Ya pagué"</strong> → En minutos se activa tu cuenta → ¡A jugar!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAS -->
+<section class="fechas-bg">
+  <div class="container">
+    <div class="sec-eyebrow">Calendario</div>
+    <h2 class="sec-title">Fechas clave</h2>
+    <p class="sec-sub">Anotate para no perderte nada</p>
+    <div class="fecha-list">
+      <div class="fecha-item">
+        <div class="fec-dot fec-green" style="animation:pulse2 1.8s ease-in-out infinite"></div>
+        <div class="fec-body">
+          <strong>🔓 Inscripciones abren el 31 de mayo</strong>
+          <span>Podés registrarte hasta el 25 de junio de 2026 · ¡Cupos limitados!</span>
+        </div>
+      </div>
+      <div class="fecha-item">
+        <div class="fec-dot fec-gold"></div>
+        <div class="fec-body">
+          <strong>Inicio del Mundial — 11 jun 2026</strong>
+          <span>México vs ? · Estadio Azteca · Ciudad de México</span>
+        </div>
+      </div>
+      <div class="fecha-item">
+        <div class="fec-dot fec-gold"></div>
+        <div class="fec-body">
+          <strong>Fase de grupos — hasta 2 jul 2026</strong>
+          <span>48 equipos · 3 partidos por grupo · 12 grupos</span>
+        </div>
+      </div>
+      <div class="fecha-item">
+        <div class="fec-dot fec-gold"></div>
+        <div class="fec-body">
+          <strong>Eliminatorias — 4 al 18 jul 2026</strong>
+          <span>32avos, Octavos, Cuartos, Semifinales y 3er puesto</span>
+        </div>
+      </div>
+      <div class="fecha-item">
+        <div class="fec-dot fec-red"></div>
+        <div class="fec-body">
+          <strong>⭐ Gran Final — 19 jul 2026</strong>
+          <span>MetLife Stadium · New Jersey / New York</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESEMPATE -->
+<section class="desempate-sec">
+  <div class="container">
+    <div class="sec-eyebrow">Reglamento</div>
+    <h2 class="sec-title">Criterio de desempate</h2>
+    <p class="sec-sub">Si dos jugadores terminan con los mismos puntos, el puesto se define en este orden</p>
+    <div class="tie-grid">
+      <div class="tie-row">
+        <div class="tie-rank">1</div>
+        <div class="tie-body">
+          <strong>Más marcadores exactos</strong>
+          <span>Quien haya acertado más resultados con el score preciso (incluyendo penales)</span>
+        </div>
+      </div>
+      <div class="tie-row">
+        <div class="tie-rank">2</div>
+        <div class="tie-body">
+          <strong>Más goleadores acertados</strong>
+          <span>Suma de todos los goleadores correctamente pronosticados durante el torneo</span>
+        </div>
+      </div>
+      <div class="tie-row">
+        <div class="tie-rank">3</div>
+        <div class="tie-body">
+          <strong>Más resultados correctos</strong>
+          <span>Cantidad de partidos donde se acertó ganador o empate</span>
+        </div>
+      </div>
+    </div>
+    <div class="tie-final">
+      Si persiste el empate con los tres criterios anteriores → <strong>comparten el puesto y dividen el premio</strong>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-fin">
+  <span class="cta-fin-trophy">🏆</span>
+  <h2>¿Quién sabe más de fútbol?</h2>
+  <p>El prode más completo del Mundial 2026. Inscribite, pronosticá cada partido y llevate hasta <strong style="color:var(--gold2)">$100.000</strong> — si sabés, demostralo.</p>
+  <a href="index.html" class="btn-main cta-app" style="font-size:1.1rem;padding:16px 44px"
+     data-open-label="⚽ ¡Quiero jugar!"
+     data-closed-label="🔔 ¡No te quedes afuera!">🔔 ¡No te quedes afuera!</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">⚽ Vale 4 Prode</div>
+  <div class="foot-sub">Mundial FIFA 2026 · 🇺🇸 USA · 🇨🇦 Canadá · 🇲🇽 México</div>
+</footer>
+
+<!-- FAB consulta -->
+<button class="fab-wa" onclick="openContact()" aria-label="Hacé tu consulta">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" style="width:26px;height:26px">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+  </svg>
+</button>
+
+<!-- Modal consulta pública -->
+<div class="c-overlay" id="cOverlay" onclick="if(event.target===this)closeContact()">
+  <div class="c-box">
+    <div class="c-head">
+      <strong>💬 Consulta al administrador</strong>
+      <button class="c-close" onclick="closeContact()">✕</button>
+    </div>
+    <div id="cForm">
+      <p class="c-hint">Dejanos tu consulta y te respondemos a la brevedad por WhatsApp o mail.</p>
+      <div class="c-field">
+        <label>Nombre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(opcional)</span></label>
+        <input class="c-input" type="text" id="cNombre" placeholder="Tu nombre y apellido" maxlength="60" autocomplete="name">
+      </div>
+      <div class="c-field">
+        <label>Celular / WhatsApp <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(opcional)</span></label>
+        <input class="c-input" type="tel" id="cCelular" placeholder="Ej: 2990000000" maxlength="20" autocomplete="tel">
+      </div>
+      <div class="c-field">
+        <label>Consulta <span style="color:#e07070">*</span></label>
+        <textarea class="c-ta" id="cMsg" placeholder="¿Qué querés saber?" maxlength="500"></textarea>
+        <div class="c-cnt" id="cCnt">0/500</div>
+      </div>
+      <div class="c-err" id="cErr"></div>
+      <button class="btn-send" id="cBtn" onclick="sendContact()">Enviar consulta</button>
+    </div>
+    <div id="cSent" class="c-sent" style="display:none">
+      <div style="font-size:2.5rem;margin-bottom:10px">✅</div>
+      <div style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:6px">¡Consulta enviada!</div>
+      <div style="font-size:.82rem;color:var(--muted);margin-bottom:20px">Te respondemos a la brevedad.</div>
+      <button class="btn-send" onclick="closeContact()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Modal de consulta pública ─────────────────────────────────
+function openContact(){
+  document.getElementById('cOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeContact(){
+  document.getElementById('cOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  document.getElementById('cNombre').value='';
+  document.getElementById('cCelular').value='';
+  document.getElementById('cMsg').value='';
+  document.getElementById('cCnt').textContent='0/500';
+  document.getElementById('cErr').style.display='none';
+  document.getElementById('cForm').style.display='block';
+  document.getElementById('cSent').style.display='none';
+  document.getElementById('cBtn').disabled=false;
+  document.getElementById('cBtn').textContent='Enviar consulta';
+}
+function sendContact(){
+  var msg  = document.getElementById('cMsg').value.trim();
+  var nom  = document.getElementById('cNombre').value.trim();
+  var cel  = document.getElementById('cCelular').value.trim();
+  var errEl= document.getElementById('cErr');
+  var btn  = document.getElementById('cBtn');
+  if(!msg){ errEl.textContent='Escribí tu consulta antes de enviar.'; errEl.style.display='block'; return; }
+  errEl.style.display='none';
+  btn.disabled=true; btn.textContent='Enviando…';
+  fetch('api.php',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({action:'contact_public',nombre:nom,celular:cel,message:msg})
+  })
+  .then(function(r){return r.json();})
+  .then(function(r){
+    if(r.ok){
+      document.getElementById('cForm').style.display='none';
+      document.getElementById('cSent').style.display='block';
+    } else {
+      errEl.textContent=r.error||'Error al enviar. Intentá de nuevo.';
+      errEl.style.display='block';
+      btn.disabled=false; btn.textContent='Enviar consulta';
+    }
+  })
+  .catch(function(){
+    errEl.textContent='Error de conexión. Intentá de nuevo.';
+    errEl.style.display='block';
+    btn.disabled=false; btn.textContent='Enviar consulta';
+  });
+}
+document.getElementById('cMsg').addEventListener('input',function(){
+  document.getElementById('cCnt').textContent=this.value.length+'/500';
+});
+
+// ── Countdown + auto-switch botones ──────────────────────────
+(function(){
+  var TARGET  = new Date('2026-05-31T03:00:00Z').getTime(); // 00:00 ARG = 03:00 UTC
+  var APP_URL = 'index.html';
+  function pad(n){ return String(Math.floor(n)).padStart(2,'0'); }
+  var prevOpen = null;
+  function setButtons(isOpen){
+    if(isOpen===prevOpen) return;
+    prevOpen=isOpen;
+    document.querySelectorAll('.cta-app').forEach(function(el){
+      if(isOpen){
+        el.href=APP_URL;
+        el.onclick=null;
+        el.removeAttribute('target'); el.removeAttribute('rel');
+        el.innerHTML=el.dataset.openLabel;
+      } else {
+        el.href='#';
+        el.onclick=function(e){e.preventDefault();openContact();};
+        el.innerHTML=el.dataset.closedLabel;
+      }
+    });
+  }
+  function tick(){
+    var diff=TARGET-Date.now(), isOpen=diff<=0;
+    setButtons(isOpen);
+    if(isOpen){
+      var w=document.getElementById('cdWrap');
+      if(w&&w.querySelector('#cdDias')){
+        w.innerHTML='<div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">✅ ¡Inscripciones abiertas!</div>'
+                   +'<div style="font-size:.82rem;color:var(--muted)">Registrate ahora y empezá a pronosticar 🏆</div>';
+      }
+      return;
+    }
+    document.getElementById('cdDias').textContent  = pad(diff/86400000);
+    document.getElementById('cdHoras').textContent = pad((diff%86400000)/3600000);
+    document.getElementById('cdMins').textContent  = pad((diff%3600000)/60000);
+    document.getElementById('cdSegs').textContent  = pad((diff%60000)/1000);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
