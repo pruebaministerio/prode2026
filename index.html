@@ -346,6 +346,19 @@ button{cursor:pointer;border:none;background:none;color:inherit}
   .fnote      { font-size: 11px; }
   .pen-lbl    { font-size: 12px; }
 }
+/* ── Panel Stats ──────────────────────────────────── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
+.stat-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;text-align:center}
+.stat-n{font-size:28px;font-weight:700;color:var(--gold2);line-height:1}
+.stat-n.green{color:var(--gtx)}
+.stat-n.yellow{color:var(--ytx)}
+.stat-l{font-size:11px;color:var(--muted);margin-top:4px}
+.bar-chart{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px}
+.bar-row{display:grid;grid-template-columns:32px 1fr 24px;align-items:center;gap:6px;margin-bottom:5px}
+.bar-day{font-size:10px;color:var(--muted);text-align:right}
+.bar-bg{height:10px;background:var(--navy3);border-radius:5px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:5px;transition:width .3s}
+.bar-val{font-size:10px;color:var(--gold2);font-weight:700;text-align:right}
 </style>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BDDCDV4PM"></script>
@@ -1336,6 +1349,59 @@ function AuthScreen({onLogin,regStatus={}}){
   );
 }
 
+// ── Stats Screen (admin) ─────────────────────────────────────────────
+function StatsScreen({token}){
+  const [data,setData]=React.useState(null);
+  const [loading,setLoading]=React.useState(true);
+  const [err,setErr]=React.useState('');
+  React.useEffect(()=>{
+    api({action:'get_stats',token}).then(r=>{setLoading(false);if(r.ok)setData(r);else setErr(r.error||'Error.');});
+  },[]);
+  if(loading)return h('div',{className:'screen'},h('div',{className:'loading'},'📊 Cargando…'));
+  if(err)return h('div',{className:'screen'},h('div',{style:{color:'var(--rtx)',padding:20,textAlign:'center'}},err));
+  const{users,picks,contacts,registros_por_dia}=data;
+  const maxReg=Math.max(...registros_por_dia.map(d=>d.n),1);
+  return h('div',{className:'screen'},
+    h('div',{className:'sec'},'👥 Usuarios'),
+    h('div',{className:'stat-grid'},
+      h('div',{className:'stat-card'},h('div',{className:'stat-n'},users.total),h('div',{className:'stat-l'},'registrados')),
+      h('div',{className:'stat-card'},h('div',{className:'stat-n green'},users.active),h('div',{className:'stat-l'},'activos ✅')),
+      h('div',{className:'stat-card'},h('div',{className:'stat-n yellow'},users.pending),h('div',{className:'stat-l'},'pendientes ⏳')),
+      h('div',{className:'stat-card'},h('div',{className:'stat-n'},users.today),h('div',{className:'stat-l'},'registros hoy'))
+    ),
+    h('div',{className:'sec',style:{marginTop:14}},'⚽ Pronósticos'),
+    h('div',{className:'stat-grid'},
+      h('div',{className:'stat-card'},h('div',{className:'stat-n'},picks.total),h('div',{className:'stat-l'},'picks guardados')),
+      h('div',{className:'stat-card'},h('div',{className:'stat-n'},picks.users_with_picks),h('div',{className:'stat-l'},'usuarios con picks'))
+    ),
+    registros_por_dia.length>0&&h('div',null,
+      h('div',{className:'sec',style:{marginTop:14}},'📅 Registros por día (últimos 14 días)'),
+      h('div',{className:'bar-chart'},
+        registros_por_dia.map(d=>h('div',{key:d.dia,className:'bar-row'},
+          h('div',{className:'bar-day'},d.dia.slice(5)),
+          h('div',{className:'bar-bg'},h('div',{className:'bar-fill',style:{width:Math.round(d.n/maxReg*100)+'%'}})),
+          h('div',{className:'bar-val'},d.n)
+        ))
+      )
+    ),
+    users.recent_pending&&users.recent_pending.length>0&&h('div',null,
+      h('div',{className:'sec',style:{marginTop:14}},'⏳ Pendientes de activar'),
+      users.recent_pending.map(u=>h('div',{key:u.username,className:'uitem'},
+        h('div',{style:{fontWeight:700,fontSize:13}},u.nombre+' '+u.apellido),
+        h('div',{style:{fontSize:11,color:'var(--muted)'}}, '@'+u.username+(u.celular?' · 📱 '+u.celular:'')+(u.created_at?' · '+u.created_at.slice(0,10):''))
+      ))
+    ),
+    contacts&&contacts.length>0&&h('div',null,
+      h('div',{className:'sec',style:{marginTop:14}},'💬 Últimas consultas'),
+      contacts.map((c,i)=>h('div',{key:i,className:'uitem'},
+        h('div',{style:{fontSize:12,fontWeight:700}},(c.nombre||'Anónimo')+(c.celular?' · 📱 '+c.celular:'')),
+        h('div',{style:{fontSize:11,color:'var(--white2)',marginTop:3,lineHeight:1.4}},c.mensaje),
+        h('div',{style:{fontSize:10,color:'var(--muted)',marginTop:3}},c.sent_at)
+      ))
+    )
+  );
+}
+
 function App(){
   const [user,setUser]=useState(null);const [token,setToken]=useState(null);
   const [tab,setTab]=useState('picks');
@@ -1403,6 +1469,7 @@ function App(){
     ...(user.is_admin?[
       {key:'results',label:'Result.',icon:'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'},
       {key:'setup',  label:'Setup',  icon:'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z'},
+      {key:'stats',  label:'Stats',  icon:'M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'},
     ]:[])
   ];
 
@@ -1516,6 +1583,9 @@ function App(){
       onMatchesUpdated:async()=>{const r=await api({action:'get_matches'});if(r.ok)setMatches(r.matches||[]);},
       onKoUpdated:reloadKo,
       onPlayersUpdated:async()=>{const r=await api({action:'get_players'});if(r.ok)setPlayers(r.players||{});}}),
+
+    /* ── STATS (admin) ───────────────────────────────────── */
+    tab==='stats'&&user.is_admin&&h(StatsScreen,{token}),
 
     /* ── FAB CONSULTA ──────────────────────────────────── */
     h('button',{className:'fab-contact',onClick:()=>setShowContact(true),'aria-label':'Consultas'},
