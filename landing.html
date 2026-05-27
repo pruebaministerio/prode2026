@@ -624,6 +624,9 @@ footer{background:var(--navy2);border-top:1px solid rgba(201,168,76,.1);padding:
 </div>
 
 <script>
+// ── Rastreo de visita al landing ─────────────────────────────
+fetch('api.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'track_visit',page:'landing'})}).catch(()=>{});
+
 // ── Modal de consulta pública ─────────────────────────────────
 function openContact(){
   document.getElementById('cOverlay').classList.add('open');
