@@ -1468,12 +1468,15 @@ function App(){
 
   useEffect(()=>{const sess=SS.load();loadBase().then(()=>{setReady(true);if(sess){setUser(sess.user);setToken(sess.token);api({action:'get_picks',token:sess.token}).then(r=>{if(r.ok)setPicks(r.picks||{});});api({action:'get_knockout_picks',token:sess.token}).then(r=>{if(r.ok)setKoPicks(r.picks||{});});}});},[]);
 
-  // Heartbeat: actualiza last_seen + session_seconds en BD cada 60s.
-  // Si el admin activó al usuario, el estado se refresca automáticamente.
+  // Heartbeat cada 60s:
+  // 1. Actualiza last_seen + session_seconds en BD
+  // 2. Refresca estado del usuario (detecta activación por admin)
+  // 3. Refresca resultados y picks de eliminatorias silenciosamente
   useEffect(()=>{
     if(!token) return;
     api({action:'track_visit',page:'app'}); // registrar visita al abrir
     const iv=setInterval(async()=>{
+      // Ping: sesión + estado usuario
       const r=await api({action:'ping',token});
       if(r.ok&&r.user){
         setUser(prev=>{
@@ -1483,6 +1486,12 @@ function App(){
           return prev;
         });
       }
+      // Resultados de grupos (para que aparezcan puntos sin F5)
+      const rr=await api({action:'get_results'});
+      if(rr.ok) setResults(rr.results||{});
+      // Resultados de eliminatorias
+      const kr=await api({action:'get_knockout_matches'});
+      if(kr.ok){const kms=kr.knockout_matches||[];setKoMatches(kms);setKoResults(buildKoResults(kms));}
     },60000);
     return ()=>clearInterval(iv);
   },[token]);
